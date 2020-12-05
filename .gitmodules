@@ -1,0 +1,3 @@
+[submodule "ftl-sdk-sys/ftl-sdk"]
+	path = ftl-sdk-sys/ftl-sdk
+	url = https://github.com/Glimesh/ftl-sdk.git
