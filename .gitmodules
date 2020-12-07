@@ -4,3 +4,6 @@
 [submodule "janus-ftl-orchestrator"]
 	path = janus-ftl-orchestrator
 	url = git@github.com:danstiner/janus-ftl-orchestrator.git
+[submodule "janus-ftl-plugin"]
+	path = janus-ftl-plugin
+	url = git@github.com:danstiner/janus-ftl-plugin.git
