@@ -1,3 +1,6 @@
 [submodule "ftl-sdk-sys/ftl-sdk"]
 	path = ftl-sdk-sys/ftl-sdk
 	url = https://github.com/Glimesh/ftl-sdk.git
+[submodule "janus-ftl-orchestrator"]
+	path = janus-ftl-orchestrator
+	url = git@github.com:danstiner/janus-ftl-orchestrator.git
