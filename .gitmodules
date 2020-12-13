@@ -7,3 +7,6 @@
 [submodule "janus-ftl-plugin"]
 	path = janus-ftl-plugin
 	url = git@github.com:danstiner/janus-ftl-plugin.git
+[submodule "janus-ftl-player"]
+	path = janus-ftl-player
+	url = https://github.com/Glimesh/janus-ftl-player.git
