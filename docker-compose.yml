@@ -1,0 +1,25 @@
+version: '3'
+services:
+  orchestrator:
+    build: ./janus-ftl-orchestrator
+    environment:
+      - FTL_ORCHESTRATOR_PSK=${FTL_ORCHESTRATOR_PSK} # openssl rand -base64 64
+    restart: unless-stopped
+  ftl-edge-1:
+    build: ./janus-ftl-plugin
+    container_name: ftl-edge-1
+    environment:
+      - FTL_NODE_KIND=Edge
+      - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
+      - FTL_ORCHESTRATOR_PORT=8085
+      - FTL_ORCHESTRATOR_PSK=${FTL_ORCHESTRATOR_PSK}
+    restart: unless-stopped
+  ftl-ingest-1:
+    build: ./janus-ftl-plugin
+    container_name: ftl-ingest-1
+    environment:
+      - FTL_NODE_KIND=Ingest
+      - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
+      - FTL_ORCHESTRATOR_PORT=8085
+      - FTL_ORCHESTRATOR_PSK=${FTL_ORCHESTRATOR_PSK}
+    restart: unless-stopped
