@@ -9,6 +9,27 @@ services:
     build: ./janus-ftl-plugin
     container_name: ftl-edge-1
     environment:
+      - FTL_HOSTNAME=ftl-edge-1
+      - FTL_NODE_KIND=Edge
+      - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
+      - FTL_ORCHESTRATOR_PORT=8085
+      - FTL_ORCHESTRATOR_PSK=${FTL_ORCHESTRATOR_PSK}
+    restart: unless-stopped
+  ftl-edge-2:
+    build: ./janus-ftl-plugin
+    container_name: ftl-edge-2
+    environment:
+      - FTL_HOSTNAME=ftl-edge-2
+      - FTL_NODE_KIND=Edge
+      - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
+      - FTL_ORCHESTRATOR_PORT=8085
+      - FTL_ORCHESTRATOR_PSK=${FTL_ORCHESTRATOR_PSK}
+    restart: unless-stopped
+  ftl-edge-3:
+    build: ./janus-ftl-plugin
+    container_name: ftl-edge-3
+    environment:
+      - FTL_HOSTNAME=ftl-edge-3
       - FTL_NODE_KIND=Edge
       - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
       - FTL_ORCHESTRATOR_PORT=8085
@@ -18,6 +39,17 @@ services:
     build: ./janus-ftl-plugin
     container_name: ftl-ingest-1
     environment:
+      - FTL_HOSTNAME=ftl-ingest-1
+      - FTL_NODE_KIND=Ingest
+      - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
+      - FTL_ORCHESTRATOR_PORT=8085
+      - FTL_ORCHESTRATOR_PSK=${FTL_ORCHESTRATOR_PSK}
+    restart: unless-stopped
+  ftl-ingest-2:
+    build: ./janus-ftl-plugin
+    container_name: ftl-ingest-1
+    environment:
+      - FTL_HOSTNAME=ftl-ingest-2
       - FTL_NODE_KIND=Ingest
       - FTL_ORCHESTRATOR_HOSTNAME=orchestrator
       - FTL_ORCHESTRATOR_PORT=8085
