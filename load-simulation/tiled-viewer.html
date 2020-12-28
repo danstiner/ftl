@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTL Test Player</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000000;
+            overflow: hidden;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        #container>video {
+            display: block;
+            width: 33vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script src="main.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const janusUri = params.get('endpoint') || 'https://server.stream.danielstiner.me/janus';
+        const channelId = parseInt(params.get('channel') || '1');
+        const tileCount = parseInt(params.get('count') || '9');
+        const hidePlayback = params.get('hide') == 'true';
+
+        const container = document.getElementById("container");
+
+        for (let i = 0; i < tileCount; i++) {
+            const firstVideo = i == 0;
+
+            const video = document.createElement('video')
+            container.appendChild(video);
+
+            // Always show first video so we can see if playback is smooth
+            if (hidePlayback && !firstVideo) {
+                video.style.display = 'none';
+            }
+
+            // Wait for stream to load before playing
+            // Starting muted avoids autoplay restrictions in Chrome
+            video.oncanplaythrough = (event) => {
+                console.log("Starting playback of stream " + i);
+                video.muted = true;
+                video.play();
+            };
+
+            let player = new JanusFtlPlayer.FtlPlayer(video, janusUri);
+            player.init(channelId);
+        }
+    </script>
+</body>
+
+</html>
