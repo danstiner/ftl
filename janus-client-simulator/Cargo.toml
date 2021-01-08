@@ -1,0 +1,12 @@
+[package]
+name = "janus-client-simulator"
+version = "0.1.0"
+authors = ["Daniel Stiner <danstiner@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking", "json", "rustls-tls"] }
+serde = { version = "1.0.118", features = ["derive"] }
+uuid = { version = "0.8", features = ["v4"] }
